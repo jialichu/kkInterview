@@ -9,8 +9,17 @@ import Foundation
 
 class FriendViewModel {
     
+    enum Stauts {
+        case noFriend
+        case combineFriends
+        case friendWithInvite
+    }
+    
+    /// 頁面顯示的狀態
+    var staus = Stauts.noFriend
+    
     /// 合併的朋友列表
-    var combineFriendList: Observable<[Friend]> = Observable([])
+//    var combineFriendList = [Friend]()
     
     /// 使用者資料
     var man: Observable<Man> = Observable(nil)
@@ -43,7 +52,8 @@ class FriendViewModel {
             }
         }
         
-        combineFriendList.value = Array(mergedDict.values)
+        friendList = Array(mergedDict.values)
+        friendViewList.value = friendList
     }
 
     /// 取得使用者資料
@@ -63,6 +73,11 @@ class FriendViewModel {
         friendList = friendList.filter { $0.status != 0 }
         self.friendList = friendList
         self.friendViewList.value = friendList
+    }
+    
+    /// 好友列表為空
+    func getEmptyFriendList() async {
+        friendViewList.value = await repository.getEmptyList()
     }
     
     /// 篩選朋友

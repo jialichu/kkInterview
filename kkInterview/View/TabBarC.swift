@@ -28,7 +28,7 @@ class TabBarC: UITabBarController {
         
         // 朋友
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let friendNC = storyboard.instantiateViewController(withIdentifier: "NaviC")
+        let friendNC = storyboard.instantiateViewController(withIdentifier: "FriendNC")
         let friendImg = UIImage(named: "icTabbarFriendsOn")
         friendNC.tabBarItem = UITabBarItem(title: nil, image: friendImg, tag: 1)
         

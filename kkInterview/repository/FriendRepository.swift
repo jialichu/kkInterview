@@ -9,6 +9,12 @@ import Foundation
 
 class FriendRepository {
     
+    /// 取得空好友列表
+    func getEmptyList() async -> [Friend] {
+        let url = API.no_friend
+        return await HttpRequest.shared.fetch(url: url, type: Friend.self)
+    }
+    
     /// 取得好友列表1
     func getFriendList_1() async -> [Friend] {
         let url = API.friend_1
@@ -20,8 +26,7 @@ class FriendRepository {
         let url = API.friend_2
         return await HttpRequest.shared.fetch(url: url, type: Friend.self)
     }
-    
-    
+        
     /// 取得使用者資料
     func getMan() async -> Man {
         let url = API.man

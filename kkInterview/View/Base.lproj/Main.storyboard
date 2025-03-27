@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ocX-1C-96X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xA9-oG-MrP">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -204,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="2391.6030534351144" y="-35.211267605633807"/>
         </scene>
-        <!--View Controller-->
+        <!--LaunchVC-->
         <scene sceneID="45N-Vb-hJm">
             <objects>
-                <viewController id="xA9-oG-MrP" sceneMemberID="viewController">
+                <viewController id="xA9-oG-MrP" customClass="LaunchVC" customModule="kkInterview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zOL-4D-r55">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,16 +219,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="253"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="無好友畫面"/>
+                                        <connections>
+                                            <action selector="showFriendVC:" destination="xA9-oG-MrP" eventType="touchUpInside" id="82k-GP-IMd"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-kQ-TFH">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-kQ-TFH">
                                         <rect key="frame" x="0.0" y="253" width="393" height="253"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="只有好友列表"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="好友列表"/>
+                                        <connections>
+                                            <action selector="showFriendVC:" destination="xA9-oG-MrP" eventType="touchUpInside" id="wix-ZB-ay5"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE0-g1-CHX">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE0-g1-CHX">
                                         <rect key="frame" x="0.0" y="506" width="393" height="253"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="好友列表含邀請"/>
+                                        <connections>
+                                            <action selector="showFriendVC:" destination="xA9-oG-MrP" eventType="touchUpInside" id="OOK-Tw-caC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -250,7 +259,7 @@
         <!--Tab BarC-->
         <scene sceneID="X78-NW-yea">
             <objects>
-                <tabBarController id="ocX-1C-96X" customClass="TabBarC" customModule="kkInterview" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarC" id="ocX-1C-96X" customClass="TabBarC" customModule="kkInterview" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wUy-p5-7bD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -261,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="816" y="-35"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--FriendNC-->
         <scene sceneID="6lJ-n6-uih">
             <objects>
-                <navigationController storyboardIdentifier="NaviC" id="kv2-la-aCk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FriendNC" id="kv2-la-aCk" customClass="FriendNC" customModule="kkInterview" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qxn-vq-wyu">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

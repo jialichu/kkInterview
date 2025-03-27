@@ -62,9 +62,7 @@ class FriendVC: UIViewController {
         return view
     }()
     
-
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
@@ -75,8 +73,16 @@ class FriendVC: UIViewController {
     private func initViewModel() {
         Task {
             await viewModel.getMan()
-            await viewModel.getCombineFriendList()
-            await viewModel.getInvitingFriendList()
+            
+            switch viewModel.staus {
+                
+            case .noFriend:
+                await viewModel.getEmptyFriendList()
+            case .combineFriends:
+                await viewModel.getCombineFriendList()
+            case .friendWithInvite:
+                await viewModel.getInvitingFriendList()
+            }
         }
     }
     
@@ -101,13 +107,6 @@ class FriendVC: UIViewController {
                 self.invitingView.addSubview(self.cardStackView)
             }
         }
-        
-//        viewModel.combineFriendList.bind { [weak self] frindList in
-//            DispatchQueue.main.async {
-//                self?.tableView.reloadData()
-//            }
-//        }
-        
         
         viewModel.friendViewList.bind { [weak self] friendList in
             DispatchQueue.main.async {

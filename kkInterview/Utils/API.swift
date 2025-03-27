@@ -14,5 +14,5 @@ struct API {
     static let friend_1: String = domain + "friend1.json"
     static let friend_2: String = domain + "friend2.json"
     static let friend_invite: String = domain + "friend3.json"
-    static let friend_no_invite: String = domain + "friend4.json"
+    static let no_friend: String = domain + "friend4.json"
 }

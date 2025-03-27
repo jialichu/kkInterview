@@ -13,6 +13,7 @@
 		1831103F2D9313F400BCAACA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831103E2D9313F400BCAACA /* UIViewExtension.swift */; };
 		18724CE12D94150700988A4C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18724CE02D94150700988A4C /* StringExtension.swift */; };
 		18724CE32D94399700988A4C /* Man.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18724CE22D94399700988A4C /* Man.swift */; };
+		18800EE02D952C440047F5E0 /* FriendNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EDF2D952C440047F5E0 /* FriendNC.swift */; };
 		188D20DD2D929ED0004600A9 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D20DC2D929ED0004600A9 /* StyleButton.swift */; };
 		188D20E12D92A774004600A9 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D20E02D92A774004600A9 /* HttpRequest.swift */; };
 		18A2F3262D92525E0028F5DD /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A2F3252D92525E0028F5DD /* FriendViewModel.swift */; };
@@ -29,6 +30,7 @@
 		18ADEA682D884E6B004D43FD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADEA672D884E6B004D43FD /* HomeVC.swift */; };
 		18ADEA6A2D884E9A004D43FD /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADEA692D884E9A004D43FD /* AccountVC.swift */; };
 		18ADEA6C2D884EAD004D43FD /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADEA6B2D884EAD004D43FD /* SettingVC.swift */; };
+		18B984132D9522060087158D /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B984122D9522060087158D /* LaunchVC.swift */; };
 		18BB88DF2D8C183F00AFFAC5 /* TabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BB88DE2D8C183F00AFFAC5 /* TabBarC.swift */; };
 		18CBACC22D92AE59008ED74D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18CBACC12D92AE59008ED74D /* Alamofire */; };
 		18CBACC42D92BA52008ED74D /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBACC32D92BA52008ED74D /* BadgeView.swift */; };
@@ -47,6 +49,7 @@
 		1831103E2D9313F400BCAACA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18724CE02D94150700988A4C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		18724CE22D94399700988A4C /* Man.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Man.swift; sourceTree = "<group>"; };
+		18800EDF2D952C440047F5E0 /* FriendNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNC.swift; sourceTree = "<group>"; };
 		188D20DC2D929ED0004600A9 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
 		188D20E02D92A774004600A9 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		18A2F3252D92525E0028F5DD /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		18ADEA672D884E6B004D43FD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		18ADEA692D884E9A004D43FD /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		18ADEA6B2D884EAD004D43FD /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		18B984122D9522060087158D /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		18BB88DE2D8C183F00AFFAC5 /* TabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarC.swift; sourceTree = "<group>"; };
 		18CBACC32D92BA52008ED74D /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		18CBACC62D930115008ED74D /* FriendCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCardView.xib; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				18ADEA572D88422C004D43FD /* Main.storyboard */,
+				18800EDF2D952C440047F5E0 /* FriendNC.swift */,
+				18B984122D9522060087158D /* LaunchVC.swift */,
 				18ADEA552D88422C004D43FD /* FriendVC.swift */,
 				18BB88DE2D8C183F00AFFAC5 /* TabBarC.swift */,
 				18ADEA652D884E49004D43FD /* MoneyVC.swift */,
@@ -285,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18724CE32D94399700988A4C /* Man.swift in Sources */,
+				18B984132D9522060087158D /* LaunchVC.swift in Sources */,
 				18ADEA562D88422C004D43FD /* FriendVC.swift in Sources */,
 				188D20DD2D929ED0004600A9 /* StyleButton.swift in Sources */,
 				18ADEA6C2D884EAD004D43FD /* SettingVC.swift in Sources */,
@@ -295,6 +302,7 @@
 				18F49B902D93DE6F0055B455 /* Friend.swift in Sources */,
 				1831103F2D9313F400BCAACA /* UIViewExtension.swift in Sources */,
 				18ADEA522D88422C004D43FD /* AppDelegate.swift in Sources */,
+				18800EE02D952C440047F5E0 /* FriendNC.swift in Sources */,
 				18F49B922D93E0F40055B455 /* Observable.swift in Sources */,
 				18ADEA542D88422C004D43FD /* SceneDelegate.swift in Sources */,
 				180858522D8C262900AD56B9 /* UIColorExtension.swift in Sources */,
