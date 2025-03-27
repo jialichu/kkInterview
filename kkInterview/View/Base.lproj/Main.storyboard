@@ -91,13 +91,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrg-hC-Oq8">
                                                             <rect key="frame" x="30" y="0.0" width="333" height="60"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="想轉一筆給誰呢？" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-gx-Ebi">
+                                                                <searchBar contentMode="redraw" placeholder="想轉一筆給誰呢？" translatesAutoresizingMaskIntoConstraints="NO" id="yws-lR-lek">
                                                                     <rect key="frame" x="0.0" y="15" width="284" height="30"/>
-                                                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                                                    <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
-                                                                </textField>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="WHq-YI-iiV" id="WMS-nq-NMW"/>
+                                                                    </connections>
+                                                                </searchBar>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8A-aX-i5o">
                                                                     <rect key="frame" x="284" y="15" width="49" height="30"/>
                                                                     <state key="normal" title="Button"/>
@@ -191,9 +191,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="avatarImgView" destination="5B8-ZW-Fgd" id="UuI-zd-M8O"/>
+                        <outlet property="idLabel" destination="vHY-Gm-2Ve" id="2fv-ae-7nW"/>
                         <outlet property="invitingView" destination="b9v-5Y-VGm" id="nqt-hR-gEI"/>
                         <outlet property="invitingViewHeight" destination="Hrj-uf-Szz" id="bXL-Gw-RHl"/>
-                        <outlet property="searchTextField" destination="Soe-gx-Ebi" id="2Ka-d7-VAN"/>
+                        <outlet property="nameLabel" destination="vw0-bP-8VS" id="5tV-8X-foP"/>
+                        <outlet property="searchBar" destination="yws-lR-lek" id="0fU-LF-LK5"/>
                         <outlet property="segmentView" destination="rGv-Rj-hCZ" id="LBe-dg-pQg"/>
                         <outlet property="tableView" destination="B1s-K9-KSX" id="0zr-vc-A73"/>
                     </connections>
@@ -286,9 +288,6 @@
         <image name="imgFriendsList" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -11,17 +11,19 @@ class FriendVC: UIViewController {
 
     @IBOutlet weak var avatarImgView: UIImageView!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var idLabel: UILabel!
+    
     @IBOutlet weak var invitingView: UIView!
     
     @IBOutlet weak var segmentView: UIView!
         
-    @IBOutlet weak var searchTextField: UITextField!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+        
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var invitingViewHeight: NSLayoutConstraint!
-    
-    var invitingFriends: [String] = ["彭安亭", "施君凌", "趙君麟"]
     
     lazy var viewModel = {
         FriendViewModel()
@@ -51,8 +53,7 @@ class FriendVC: UIViewController {
     }()
     
     private lazy var cardStackView: CardStackView = {
-        let view = CardStackView(frame: .zero, friends: invitingFriends)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = CardStackView(frame: .zero, friends: [""])
         return view
     }()
     
@@ -67,34 +68,60 @@ class FriendVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
+        binding()
         setView()
     }
     
     private func initViewModel() {
         Task {
-            await viewModel.getFriendList()
+            await viewModel.getMan()
+            await viewModel.getCombineFriendList()
+            await viewModel.getInvitingFriendList()
+        }
+    }
+    
+    private func binding() {
+        viewModel.man.bind({ [weak self] man in
+            DispatchQueue.main.async {
+                guard let man = man else { return }
+                self?.nameLabel.text = man.name
+                self?.idLabel.text = "KOKO ID：\(String(describing: man.kokoid))"
+            }
+        })
+        
+        viewModel.invitingFriendList.bind { [weak self] friendList in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                guard let friendList = friendList else { return }
+                let width: Int = Int(self.invitingView.frame.width - 60)
+                let height: Int = friendList.count * 80
+                let view = CardStackView(frame: CGRect(x: 30, y: .zero, width: width, height: height), friends: friendList)
+                self.cardStackView = view
+                self.invitingViewHeight.constant = CGFloat(friendList.count * 80) + 20
+                self.invitingView.addSubview(self.cardStackView)
+            }
         }
         
-        viewModel.reloadTableView = { [unowned self] in
-            DispatchQueue.main.async {                
-                self.tableView.reloadData()
+//        viewModel.combineFriendList.bind { [weak self] frindList in
+//            DispatchQueue.main.async {
+//                self?.tableView.reloadData()
+//            }
+//        }
+        
+        
+        viewModel.friendViewList.bind { [weak self] friendList in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
-            
-            
         }
     }
     
     private func setView() {
         view.backgroundColor = ColorGuide.whiteTwo
         segmentView.addSubview(segment)
-        invitingView.addSubview(cardStackView)
         [badgeFriend, badgeChat].forEach { segmentView.addSubview($0) }
         
         NSLayoutConstraint.activate([
-            cardStackView.topAnchor.constraint(equalTo: invitingView.topAnchor, constant: .zero),
-            cardStackView.bottomAnchor.constraint(equalTo: invitingView.bottomAnchor, constant: -20),
-            cardStackView.leadingAnchor.constraint(equalTo: invitingView.leadingAnchor, constant: 30),
-            cardStackView.trailingAnchor.constraint(equalTo: invitingView.trailingAnchor, constant: -30),
             segment.widthAnchor.constraint(equalToConstant: 100),
             segment.heightAnchor.constraint(equalToConstant: 28),
             segment.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 30),
@@ -102,16 +129,23 @@ class FriendVC: UIViewController {
             badgeFriend.topAnchor.constraint(equalTo: segmentView.topAnchor, constant: 10),
             badgeFriend.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 70),
             badgeChat.topAnchor.constraint(equalTo: segmentView.topAnchor, constant: 10),
-            badgeChat.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 120)
+            badgeChat.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 120),
+            searchBar.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        invitingViewHeight.constant = CGFloat(invitingFriends.count * 80) + 20
-
+                
         tableView.delegate = self
         tableView.dataSource = self
         
         let friendCell = UINib(nibName: "FriendCell", bundle: nil)
         tableView.register(friendCell, forCellReuseIdentifier: "FriendCell")
+        
+        searchBar.delegate = self
+        searchBar.setImage(UIImage(named: "icSearchBarSearchGray"), for: .search, state: .normal)
+        // 設定backgroundImage 可讓背景兩條線消失
+        searchBar.backgroundImage = UIImage()
+        searchBar.searchTextField.font = .systemFont(ofSize: 14)
+        searchBar.searchTextField.layer.cornerRadius = 10
+        searchBar.searchTextField.layer.masksToBounds = true
     }
 
 
@@ -120,12 +154,12 @@ class FriendVC: UIViewController {
 // MARK: UITableViewDataSource
 extension FriendVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.friendList.count
+        return viewModel.friendViewList.value?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendCell
-        cell.viewModel = viewModel.friendList[indexPath.row]
+        cell.viewModel = viewModel.friendViewList.value![indexPath.row]
         return cell
     }
     
@@ -136,6 +170,14 @@ extension FriendVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+}
+
+// MARK: UISearchBarDelegate
+extension FriendVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        viewModel.filterFriend(searchText: searchText)
+    }
 }
 
 // MARK: LineSegmentControllerDelegate

@@ -25,7 +25,9 @@ class FriendCell: UITableViewCell {
         didSet {
             guard let viewModel = viewModel else { return }
             nameLabel.text = viewModel.name
-            starImgeView.isHidden = viewModel.isTop.toBool()
+            starImgeView.isHidden = !viewModel.isTop.toBool()
+            inviteBtn.isHidden = (viewModel.status == 2) ? false : true
+            moreBtn.isHidden = (viewModel.status == 2) ? true : false
         }
     }
     
@@ -37,6 +39,7 @@ class FriendCell: UITableViewCell {
     
     private func setView() {
         inviteBtn.isEnabled = false
+        inviteBtn.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

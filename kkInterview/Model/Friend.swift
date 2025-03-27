@@ -13,5 +13,9 @@ struct Friend: Codable {
     let isTop: String
     let fid: String
     let updateDate: String
+    var compareDate: Int? {
+        let date = updateDate.replacingOccurrences(of: "/", with: "")
+        return Int(date)
+    }    
 }
 
