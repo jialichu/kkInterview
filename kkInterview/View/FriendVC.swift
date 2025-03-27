@@ -18,9 +18,9 @@ class FriendVC: UIViewController {
     @IBOutlet weak var invitingView: UIView!
     
     @IBOutlet weak var segmentView: UIView!
-        
-    @IBOutlet weak var searchBar: UISearchBar!
-        
+                
+    @IBOutlet weak var searchTextField: UITextField!
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var emptyView: UIView!
@@ -145,7 +145,7 @@ class FriendVC: UIViewController {
             badgeFriend.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 70),
             badgeChat.topAnchor.constraint(equalTo: segmentView.topAnchor, constant: 10),
             badgeChat.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 120),
-            searchBar.heightAnchor.constraint(equalToConstant: 50),
+            searchTextField.heightAnchor.constraint(equalToConstant: 50),
             friendEmptyView.leadingAnchor.constraint(equalTo: emptyView.leadingAnchor),
             friendEmptyView.trailingAnchor.constraint(equalTo: emptyView.trailingAnchor),
             friendEmptyView.topAnchor.constraint(equalTo: emptyView.topAnchor),
@@ -160,14 +160,23 @@ class FriendVC: UIViewController {
         let friendCell = UINib(nibName: "FriendCell", bundle: nil)
         tableView.register(friendCell, forCellReuseIdentifier: "FriendCell")
         
-        // searchBar
-        searchBar.delegate = self
-        searchBar.setImage(UIImage(named: "icSearchBarSearchGray"), for: .search, state: .normal)
-        // 設定backgroundImage 可讓背景兩條線消失
-        searchBar.backgroundImage = UIImage()
-        searchBar.searchTextField.font = .systemFont(ofSize: 14)
-        searchBar.searchTextField.layer.cornerRadius = 10
-        searchBar.searchTextField.layer.masksToBounds = true
+        // searchTextField
+        searchTextField.delegate = self
+        let searchImgView = UIImageView(frame: CGRect(x: 8, y: .zero, width: 14, height: 14))
+        searchImgView.image = UIImage(named: "icSearchBarSearchGray")
+        searchImgView.contentMode = .scaleAspectFit
+        searchTextField.leftView = searchImgView
+        searchTextField.leftViewMode = .always
+        searchTextField.layer.cornerRadius = 10
+        searchTextField.layer.borderWidth = 0
+        searchTextField.backgroundColor =  ColorGuide.steel12
+        searchTextField.layer.masksToBounds = true
+        
+        let placeholderAttri: [NSAttributedString.Key : Any] = [
+            .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+            .foregroundColor: ColorGuide.steel
+        ]
+        searchTextField.attributedPlaceholder = NSAttributedString(string: "想轉一筆給誰呢？", attributes: placeholderAttri)
     }
     
     @IBAction func dismiss(_ sender: Any) {
@@ -200,9 +209,9 @@ extension FriendVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: UISearchBarDelegate
-extension FriendVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.filterFriend(searchText: searchText)
+extension FriendVC: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        viewModel.filterFriend(searchText: textField.text ?? "")
     }
 }
 

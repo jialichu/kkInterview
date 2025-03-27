@@ -63,7 +63,7 @@ class TabBarC: UITabBarController {
         
         // 設定homeBarImg
         
-        viewControllers[2].tabBarItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        viewControllers[2].tabBarItem.imageInsets = UIEdgeInsets(top: 1, left: 0, bottom: -1, right: 0)
         
     }
     

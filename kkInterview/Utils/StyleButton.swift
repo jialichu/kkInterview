@@ -38,14 +38,14 @@ class StyleButton: UIButton {
     
     private func setView() {
         normalColor = ColorGuide.hotPink
-        disableColor = ColorGuide.lightGrey
+        disableColor = ColorGuide.veryLightGrey
         let normalAttributes: [NSAttributedString.Key : Any] = [
             .font: UIFont.systemFont(ofSize: 14, weight: .medium),
             .foregroundColor: ColorGuide.hotPink
         ]
         let disabledAttributes: [NSAttributedString.Key : Any] = [
             .font: UIFont.systemFont(ofSize: 14, weight: .medium),
-            .foregroundColor: ColorGuide.lightGrey
+            .foregroundColor: ColorGuide.veryLightGrey
         ]
         let normalString = NSAttributedString(string: titleLabel?.text ?? "", attributes: normalAttributes)
         let disabledString = NSAttributedString(string: titleLabel?.text ?? "", attributes: disabledAttributes)

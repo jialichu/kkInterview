@@ -109,13 +109,11 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrg-hC-Oq8">
                                                             <rect key="frame" x="30" y="0.0" width="333" height="60"/>
                                                             <subviews>
-                                                                <searchBar contentMode="redraw" placeholder="想轉一筆給誰呢？" translatesAutoresizingMaskIntoConstraints="NO" id="yws-lR-lek">
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="想轉一筆給誰呢？" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iTr-7H-qcT">
                                                                     <rect key="frame" x="0.0" y="15" width="284" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
-                                                                    <connections>
-                                                                        <outlet property="delegate" destination="WHq-YI-iiV" id="WMS-nq-NMW"/>
-                                                                    </connections>
-                                                                </searchBar>
+                                                                </textField>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8A-aX-i5o">
                                                                     <rect key="frame" x="284" y="15" width="49" height="30"/>
                                                                     <state key="normal" title="Button"/>
@@ -182,7 +180,7 @@
                         <outlet property="invitingView" destination="b9v-5Y-VGm" id="nqt-hR-gEI"/>
                         <outlet property="invitingViewHeight" destination="Hrj-uf-Szz" id="bXL-Gw-RHl"/>
                         <outlet property="nameLabel" destination="vw0-bP-8VS" id="5tV-8X-foP"/>
-                        <outlet property="searchBar" destination="yws-lR-lek" id="0fU-LF-LK5"/>
+                        <outlet property="searchTextField" destination="iTr-7H-qcT" id="tuY-WI-Agu"/>
                         <outlet property="segmentView" destination="rGv-Rj-hCZ" id="LBe-dg-pQg"/>
                         <outlet property="tableView" destination="B1s-K9-KSX" id="0zr-vc-A73"/>
                     </connections>
