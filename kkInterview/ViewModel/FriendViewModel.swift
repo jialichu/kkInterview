@@ -18,8 +18,8 @@ class FriendViewModel {
     /// 頁面顯示的狀態
     var staus = Stauts.noFriend
     
-    /// 合併的朋友列表
-//    var combineFriendList = [Friend]()
+    /// 沒有朋友
+    var isEmpty: Observable<Bool> = Observable(false)
     
     /// 使用者資料
     var man: Observable<Man> = Observable(nil)
@@ -28,7 +28,7 @@ class FriendViewModel {
     var friendList = [Friend]()
     
     /// 朋友列表(view)
-    lazy var friendViewList: Observable<[Friend]> = Observable([])
+    var friendViewList: Observable<[Friend]> = Observable([])
     ///  邀請送出的朋友列表
     var invitingFriendList: Observable<[String]> = Observable([])
     
@@ -78,6 +78,7 @@ class FriendViewModel {
     /// 好友列表為空
     func getEmptyFriendList() async {
         friendViewList.value = await repository.getEmptyList()
+        isEmpty.value = friendViewList.value?.isEmpty
     }
     
     /// 篩選朋友

@@ -23,6 +23,8 @@ class FriendVC: UIViewController {
         
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var emptyView: UIView!
+    
     @IBOutlet weak var invitingViewHeight: NSLayoutConstraint!
     
     lazy var viewModel = {
@@ -113,12 +115,21 @@ class FriendVC: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+        
+        viewModel.isEmpty.bind { [weak self] isEmpty in
+            guard let isEmpty = isEmpty else { return }
+            self?.emptyView.isHidden = !isEmpty
+            self?.tableView.isHidden = isEmpty
+        }
     }
     
     private func setView() {
         view.backgroundColor = ColorGuide.whiteTwo
         segmentView.addSubview(segment)
         [badgeFriend, badgeChat].forEach { segmentView.addSubview($0) }
+        
+        let friendEmptyView: FriendEmptyView = UIView.fromNib()
+        self.emptyView.addSubview(friendEmptyView)
         
         NSLayoutConstraint.activate([
             segment.widthAnchor.constraint(equalToConstant: 100),
@@ -129,7 +140,12 @@ class FriendVC: UIViewController {
             badgeFriend.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 70),
             badgeChat.topAnchor.constraint(equalTo: segmentView.topAnchor, constant: 10),
             badgeChat.leadingAnchor.constraint(equalTo: segmentView.leadingAnchor, constant: 120),
-            searchBar.heightAnchor.constraint(equalToConstant: 50)
+            searchBar.heightAnchor.constraint(equalToConstant: 50),
+            friendEmptyView.leadingAnchor.constraint(equalTo: emptyView.leadingAnchor),
+            friendEmptyView.trailingAnchor.constraint(equalTo: emptyView.trailingAnchor),
+            friendEmptyView.topAnchor.constraint(equalTo: emptyView.topAnchor),
+            friendEmptyView.bottomAnchor.constraint(equalTo: emptyView.bottomAnchor)
+            
         ])
                 
         tableView.delegate = self

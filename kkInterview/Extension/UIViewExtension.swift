@@ -28,4 +28,20 @@ extension UIView {
         // 把陰影 layer 放到底層
         self.layer.insertSublayer(shadowLayer, at: 0)
     }
+    
+    func applyGradient(colours: [UIColor], buttonSize: CGSize) {
+        self.applyGradient(colours: colours, locations: nil, buttonSize: buttonSize)
+    }
+        
+    private func applyGradient(colours: [UIColor], locations: [NSNumber]?, buttonSize: CGSize) -> CAGradientLayer {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        gradient.cornerRadius = buttonSize.height / 2
+        self.layer.insertSublayer(gradient, at: 0)
+        return gradient
+    }
 }
