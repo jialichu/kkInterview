@@ -58,12 +58,6 @@ class FriendVC: UIViewController {
         let view = CardStackView(frame: .zero, friends: [""])
         return view
     }()
-    
-    private lazy var friendCardView: FriendCardView = {
-        let view: FriendCardView = UIView.fromNib()
-        return view
-    }()
-    
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +66,10 @@ class FriendVC: UIViewController {
         setView()
     }
     
+    /// 初始化viewModel
     private func initViewModel() {
+        AppUtils.shared.showLoadingView(view)
+        
         Task {
             await viewModel.getMan()
             
@@ -88,43 +85,51 @@ class FriendVC: UIViewController {
         }
     }
     
+    /// 資料綁定
     private func binding() {
         viewModel.man.bind({ [weak self] man in
-            DispatchQueue.main.async {
-                guard let man = man else { return }
-                self?.nameLabel.text = man.name
-                self?.idLabel.text = "KOKO ID：\(String(describing: man.kokoid))"
-            }
+            AppUtils.shared.hideLoadingView(self!.view)
+            guard let man = man else { return }
+            self?.nameLabel.text = man.name
+            self?.idLabel.text = "KOKO ID：\(String(describing: man.kokoid))"
         })
         
         viewModel.invitingFriendList.bind { [weak self] friendList in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                guard let friendList = friendList else { return }
-                let width: Int = Int(self.invitingView.frame.width - 60)
-                let height: Int = friendList.count * 80
-                let view = CardStackView(frame: CGRect(x: 30, y: .zero, width: width, height: height), friends: friendList)
-                self.cardStackView = view
-                self.invitingViewHeight.constant = CGFloat(friendList.count * 80) + 20
-                self.invitingView.addSubview(self.cardStackView)
-            }
+            AppUtils.shared.hideLoadingView(self.view)
+            guard let friendList = friendList else { return }
+            let width: Int = Int(self.invitingView.frame.width - 60)
+            let height: Int = friendList.count * 80
+            let view = CardStackView(frame: CGRect(x: 30, y: .zero, width: width, height: height), friends: friendList)
+            self.cardStackView = view
+            self.invitingViewHeight.constant = CGFloat(friendList.count * 80) + 20
+            self.invitingView.addSubview(self.cardStackView)
         }
         
         viewModel.friendViewList.bind { [weak self] friendList in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
+            AppUtils.shared.hideLoadingView(self!.view)
+            self?.tableView.reloadData()            
         }
         
         viewModel.isEmpty.bind { [weak self] isEmpty in
+            AppUtils.shared.hideLoadingView(self!.view)
             guard let isEmpty = isEmpty else { return }
             self?.emptyView.isHidden = !isEmpty
             self?.tableView.isHidden = isEmpty
         }
     }
     
+    /// 介面設定
     private func setView() {
         view.backgroundColor = ColorGuide.whiteTwo
+        // navigationBar
+        let navigationBar = self.navigationController?.navigationBar
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationBar?.scrollEdgeAppearance = appearance
+        navigationBar?.standardAppearance = appearance
+        
+        // constraint
         segmentView.addSubview(segment)
         [badgeFriend, badgeChat].forEach { segmentView.addSubview($0) }
         
@@ -147,13 +152,15 @@ class FriendVC: UIViewController {
             friendEmptyView.bottomAnchor.constraint(equalTo: emptyView.bottomAnchor)
             
         ])
-                
+        
+        // tableView
         tableView.delegate = self
         tableView.dataSource = self
         
         let friendCell = UINib(nibName: "FriendCell", bundle: nil)
         tableView.register(friendCell, forCellReuseIdentifier: "FriendCell")
         
+        // searchBar
         searchBar.delegate = self
         searchBar.setImage(UIImage(named: "icSearchBarSearchGray"), for: .search, state: .normal)
         // 設定backgroundImage 可讓背景兩條線消失
@@ -162,6 +169,11 @@ class FriendVC: UIViewController {
         searchBar.searchTextField.layer.cornerRadius = 10
         searchBar.searchTextField.layer.masksToBounds = true
     }
+    
+    @IBAction func dismiss(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
 
 
 }
@@ -190,7 +202,6 @@ extension FriendVC: UITableViewDelegate, UITableViewDataSource {
 // MARK: UISearchBarDelegate
 extension FriendVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         viewModel.filterFriend(searchText: searchText)
     }
 }

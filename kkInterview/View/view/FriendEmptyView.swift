@@ -17,6 +17,10 @@ class FriendEmptyView: UIView {
         let frogGreen = UIColor(rgb: 0x56b30b, alpha: 1)
         let booger = UIColor(rgb: 0xa6cc42, alpha: 1)
         addFriendBtn.applyGradient(colours: [frogGreen, booger], buttonSize: CGSize(width: 192, height: 40))
+        addFriendBtn.layer.shadowColor = ColorGuide.appleGreen.cgColor
+        addFriendBtn.layer.shadowOpacity = 0.4
+        addFriendBtn.layer.shadowOffset = CGSize(width: 0, height: 4)
+        addFriendBtn.layer.shadowRadius = 8
         addFriendBtn.setTitleColor(.white, for: .normal)
         descriptionTextView.setApartLinkStyle("幫助好友更快找到你？設定 KOKO ID", findTextAsLink: "設定 KOKO ID", linkURL: "", alignment: .center)
         descriptionTextView.isScrollEnabled = false

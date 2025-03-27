@@ -20,7 +20,7 @@ extension UIView {
         // 設定陰影
         let shadowLayer = CAShapeLayer()
         shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-        shadowLayer.fillColor = UIColor.white.cgColor
+        shadowLayer.fillColor = shadowColor.cgColor
         shadowLayer.shadowOffset = shadowOffset
         shadowLayer.shadowOpacity = shadowOpacity
         shadowLayer.shadowRadius = cornerRadius

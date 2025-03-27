@@ -73,8 +73,20 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGv-Rj-hCZ">
                                                 <rect key="frame" x="0.0" y="234" width="393" height="49"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Khd-fI-GeP">
+                                                        <rect key="frame" x="0.0" y="48" width="393" height="1"/>
+                                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="vSH-yk-xBK"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="dME-rs-qAo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Khd-fI-GeP" secondAttribute="trailing" id="hLc-hk-XgO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Khd-fI-GeP" secondAttribute="bottom" id="meN-m1-Kld"/>
+                                                    <constraint firstItem="Khd-fI-GeP" firstAttribute="leading" secondItem="rGv-Rj-hCZ" secondAttribute="leading" id="zbx-qe-ghq"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ytt-al-uBJ">
@@ -149,8 +161,11 @@
                     <tabBarItem key="tabBarItem" title="" image="icTabbarFriendsOn" id="VzH-fm-fNg"/>
                     <navigationItem key="navigationItem" id="1P3-mb-eHb">
                         <leftBarButtonItems>
-                            <barButtonItem title="Item" image="icNavPinkWithdraw" id="NzC-mS-t8E">
+                            <barButtonItem title="Item" image="chevron.backward" catalog="system" id="NzC-mS-t8E">
                                 <color key="tintColor" red="0.92549019610000005" green="0.0" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="WHq-YI-iiV" id="C8o-cJ-tAz"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="icNavPinkTransfer" id="Q8T-Ws-NZs">
                                 <color key="tintColor" red="0.92549019610000005" green="0.0" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -260,11 +275,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="icBtnAddFriends" width="25" height="25"/>
         <image name="icInfoBackDeepGray" width="16" height="16"/>
         <image name="icNavPinkScan" width="24" height="24"/>
         <image name="icNavPinkTransfer" width="24" height="24"/>
-        <image name="icNavPinkWithdraw" width="24" height="24"/>
         <image name="icTabbarFriendsOn" width="28" height="46"/>
         <image name="imgFriendsList" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">

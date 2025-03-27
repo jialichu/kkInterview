@@ -18,6 +18,8 @@
 		18800EE42D9535F20047F5E0 /* FriendEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EE32D9535F20047F5E0 /* FriendEmptyView.swift */; };
 		18800EE72D953D590047F5E0 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EE62D953D580047F5E0 /* UITextViewExtension.swift */; };
 		18800EE92D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EE82D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift */; };
+		18800EEC2D95897B0047F5E0 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 18800EEB2D95897B0047F5E0 /* MBProgressHUD */; };
+		18800EEE2D958A0C0047F5E0 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EED2D958A0C0047F5E0 /* AppUtils.swift */; };
 		188D20DD2D929ED0004600A9 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D20DC2D929ED0004600A9 /* StyleButton.swift */; };
 		188D20E12D92A774004600A9 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D20E02D92A774004600A9 /* HttpRequest.swift */; };
 		18A2F3262D92525E0028F5DD /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A2F3252D92525E0028F5DD /* FriendViewModel.swift */; };
@@ -58,6 +60,7 @@
 		18800EE32D9535F20047F5E0 /* FriendEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEmptyView.swift; sourceTree = "<group>"; };
 		18800EE62D953D580047F5E0 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		18800EE82D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionNSMutableAttributedString.swift; sourceTree = "<group>"; };
+		18800EED2D958A0C0047F5E0 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		188D20DC2D929ED0004600A9 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
 		188D20E02D92A774004600A9 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		18A2F3252D92525E0028F5DD /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18800EEC2D95897B0047F5E0 /* MBProgressHUD in Frameworks */,
 				18CBACC22D92AE59008ED74D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +114,7 @@
 				181D80412D93828100536D2B /* CardStackView.swift */,
 				188D20E02D92A774004600A9 /* HttpRequest.swift */,
 				18F49B912D93E0F40055B455 /* Observable.swift */,
+				18800EED2D958A0C0047F5E0 /* AppUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			name = kkInterview;
 			packageProductDependencies = (
 				18CBACC12D92AE59008ED74D /* Alamofire */,
+				18800EEB2D95897B0047F5E0 /* MBProgressHUD */,
 			);
 			productName = kkInterview;
 			productReference = 18ADEA4E2D88422C004D43FD /* kkInterview.app */;
@@ -280,6 +286,7 @@
 			mainGroup = 18ADEA452D88422C004D43FD;
 			packageReferences = (
 				18CBACC02D92AE59008ED74D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				18800EEA2D95897B0047F5E0 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = 18ADEA4F2D88422C004D43FD /* Products */;
 			projectDirPath = "";
@@ -336,6 +343,7 @@
 				18CBACC92D9305B8008ED74D /* FriendCardView.swift in Sources */,
 				18A2F3292D9252EC0028F5DD /* LineSegmentController.swift in Sources */,
 				188D20E12D92A774004600A9 /* HttpRequest.swift in Sources */,
+				18800EEE2D958A0C0047F5E0 /* AppUtils.swift in Sources */,
 				18A2F3262D92525E0028F5DD /* FriendViewModel.swift in Sources */,
 				18724CE12D94150700988A4C /* StringExtension.swift in Sources */,
 				18A2F32B2D92545A0028F5DD /* FriendCell.swift in Sources */,
@@ -560,6 +568,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		18800EEA2D95897B0047F5E0 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		18CBACC02D92AE59008ED74D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -572,6 +588,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		18800EEB2D95897B0047F5E0 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18800EEA2D95897B0047F5E0 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
 		18CBACC12D92AE59008ED74D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18CBACC02D92AE59008ED74D /* XCRemoteSwiftPackageReference "Alamofire" */;
