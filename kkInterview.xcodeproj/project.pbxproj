@@ -16,6 +16,8 @@
 		18800EE02D952C440047F5E0 /* FriendNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EDF2D952C440047F5E0 /* FriendNC.swift */; };
 		18800EE22D9534EA0047F5E0 /* FriendEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18800EE12D9534EA0047F5E0 /* FriendEmptyView.xib */; };
 		18800EE42D9535F20047F5E0 /* FriendEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EE32D9535F20047F5E0 /* FriendEmptyView.swift */; };
+		18800EE72D953D590047F5E0 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EE62D953D580047F5E0 /* UITextViewExtension.swift */; };
+		18800EE92D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18800EE82D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift */; };
 		188D20DD2D929ED0004600A9 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D20DC2D929ED0004600A9 /* StyleButton.swift */; };
 		188D20E12D92A774004600A9 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D20E02D92A774004600A9 /* HttpRequest.swift */; };
 		18A2F3262D92525E0028F5DD /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A2F3252D92525E0028F5DD /* FriendViewModel.swift */; };
@@ -54,6 +56,8 @@
 		18800EDF2D952C440047F5E0 /* FriendNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNC.swift; sourceTree = "<group>"; };
 		18800EE12D9534EA0047F5E0 /* FriendEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendEmptyView.xib; sourceTree = "<group>"; };
 		18800EE32D9535F20047F5E0 /* FriendEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEmptyView.swift; sourceTree = "<group>"; };
+		18800EE62D953D580047F5E0 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		18800EE82D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionNSMutableAttributedString.swift; sourceTree = "<group>"; };
 		188D20DC2D929ED0004600A9 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
 		188D20E02D92A774004600A9 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		18A2F3252D92525E0028F5DD /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				180858512D8C262900AD56B9 /* UIColorExtension.swift */,
 				1831103E2D9313F400BCAACA /* UIViewExtension.swift */,
 				18724CE02D94150700988A4C /* StringExtension.swift */,
+				18800EE62D953D580047F5E0 /* UITextViewExtension.swift */,
+				18800EE82D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				18B984132D9522060087158D /* LaunchVC.swift in Sources */,
 				18ADEA562D88422C004D43FD /* FriendVC.swift in Sources */,
 				188D20DD2D929ED0004600A9 /* StyleButton.swift in Sources */,
+				18800EE72D953D590047F5E0 /* UITextViewExtension.swift in Sources */,
 				18ADEA6C2D884EAD004D43FD /* SettingVC.swift in Sources */,
 				18ADEA682D884E6B004D43FD /* HomeVC.swift in Sources */,
 				18ADEA6A2D884E9A004D43FD /* AccountVC.swift in Sources */,
@@ -320,6 +327,7 @@
 				18800EE02D952C440047F5E0 /* FriendNC.swift in Sources */,
 				18F49B922D93E0F40055B455 /* Observable.swift in Sources */,
 				18ADEA542D88422C004D43FD /* SceneDelegate.swift in Sources */,
+				18800EE92D953D9B0047F5E0 /* extensionNSMutableAttributedString.swift in Sources */,
 				180858522D8C262900AD56B9 /* UIColorExtension.swift in Sources */,
 				18F49B942D93E24B0055B455 /* FriendRepository.swift in Sources */,
 				1808584F2D8C249B00AD56B9 /* ColorGuide.swift in Sources */,

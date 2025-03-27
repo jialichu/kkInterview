@@ -33,7 +33,7 @@ extension UIView {
         self.applyGradient(colours: colours, locations: nil, buttonSize: buttonSize)
     }
         
-    private func applyGradient(colours: [UIColor], locations: [NSNumber]?, buttonSize: CGSize) -> CAGradientLayer {
+    private func applyGradient(colours: [UIColor], locations: [NSNumber]?, buttonSize: CGSize) {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }
@@ -42,6 +42,5 @@ extension UIView {
         gradient.endPoint = CGPoint(x: 1, y: 0.5)
         gradient.cornerRadius = buttonSize.height / 2
         self.layer.insertSublayer(gradient, at: 0)
-        return gradient
     }
 }

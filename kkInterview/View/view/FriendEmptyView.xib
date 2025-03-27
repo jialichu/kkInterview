@@ -41,8 +41,8 @@
                         <constraint firstAttribute="width" constant="192" id="LGL-0G-iKq"/>
                         <constraint firstAttribute="height" constant="40" id="jx5-k1-aSV"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="加好友"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="加好友"/>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icAddFriendWhite" translatesAutoresizingMaskIntoConstraints="NO" id="HF2-kA-gTl">
                     <rect key="frame" x="260.66666666666669" y="342.66666666666669" width="24" height="24"/>
@@ -51,23 +51,28 @@
                         <constraint firstAttribute="width" constant="24" id="nUy-57-w66"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="幫助好友更快找到你？設定 KOKO ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLe-rT-M8d">
-                    <rect key="frame" x="89" y="411.66666666666669" width="215" height="15.666666666666686"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="幫助好友更快找到你？設定 KOKO ID" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nET-ys-JVj">
+                    <rect key="frame" x="20" y="411.66666666666669" width="353" height="30"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="RpZ-Jt-C1h"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="GLe-rT-M8d" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6gq-aH-hWR"/>
                 <constraint firstItem="Tsx-Jh-MSo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7wY-nM-QTx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nET-ys-JVj" secondAttribute="trailing" constant="20" id="8TV-2h-tD3"/>
                 <constraint firstItem="Tsx-Jh-MSo" firstAttribute="top" secondItem="30p-Of-p4F" secondAttribute="bottom" constant="40" id="AuH-jw-Lqf"/>
                 <constraint firstItem="wBW-dD-Upt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BNr-VQ-HVR"/>
                 <constraint firstItem="lh2-g6-ZMq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="F6m-x8-2EC"/>
+                <constraint firstItem="nET-ys-JVj" firstAttribute="top" secondItem="wBW-dD-Upt" secondAttribute="bottom" constant="37" id="RbU-v8-0b9"/>
+                <constraint firstItem="nET-ys-JVj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="SKD-H5-Ua0"/>
                 <constraint firstItem="30p-Of-p4F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="SdO-xS-pSz"/>
-                <constraint firstItem="GLe-rT-M8d" firstAttribute="top" secondItem="wBW-dD-Upt" secondAttribute="bottom" constant="37" id="fMq-xb-loD"/>
                 <constraint firstItem="wBW-dD-Upt" firstAttribute="top" secondItem="lh2-g6-ZMq" secondAttribute="bottom" constant="25" id="glP-XL-15Y"/>
                 <constraint firstItem="30p-Of-p4F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="h9c-cu-TgF"/>
                 <constraint firstItem="HF2-kA-gTl" firstAttribute="centerY" secondItem="wBW-dD-Upt" secondAttribute="centerY" id="kZr-Th-XtP"/>
@@ -77,6 +82,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addFriendBtn" destination="wBW-dD-Upt" id="A5o-Ra-3Ja"/>
+                <outlet property="descriptionTextView" destination="nET-ys-JVj" id="cjt-1x-wsL"/>
             </connections>
             <point key="canvasLocation" x="-83.206106870229007" y="-139.78873239436621"/>
         </view>
@@ -84,6 +90,9 @@
     <resources>
         <image name="icAddFriendWhite" width="24" height="24"/>
         <image name="imgFriendsEmpty" width="245" height="172"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
